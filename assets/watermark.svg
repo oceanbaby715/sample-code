@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="358px" height="300px">
+                <text x="0px" y="50px" dy="12px"
+                    text-anchor="start"
+                    stroke="#000"
+                    stroke-opacity="0.1"
+                    fill="none"
+                    transform="rotate(-15,0 50)"
+                    font-weight="100"
+                    font-size="14"
+                    font-family="microsoft yahe"
+                    >
+                    前端_逗叔
+                </text><text x="0px" y="70px" dy="12px"
+                    text-anchor="start"
+                    stroke="#000"
+                    stroke-opacity="0.1"
+                    fill="none"
+                    transform="rotate(-15,0 50)"
+                    font-weight="100"
+                    font-size="14"
+                    font-family="microsoft yahe"
+                    >
+                    https://intolearn.com
+                </text>
+            </svg>

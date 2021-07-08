@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>表单label文字两端对齐</title>
+  <meta name="description" content="前端各种示例效果展示" />
+  <meta name="keywords" content="前端,前端_逗叔,css,javascript,文字对齐,文字两端对齐,表单文字对齐" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/index.css">
+  <style>
+    .card {
+      box-sizing: border-box;
+      color: rgba(0, 0, 0, .65);
+      font-size: 14px;
+      position: relative;
+      background: #fff;
+      border-radius: 2px;
+      width: 350px;
+      padding: 16px;
+      margin: 0 auto;
+      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+      margin-bottom: 24px;
+    }
+
+    .card .item {
+      display: flex;
+      height: 30px;
+      align-items: center;
+    }
+
+    .item .label {
+      width: 80px;
+      text-align: justify;
+      text-align-last: justify;
+      display: block;
+      position: relative;
+      padding-right: 8px;
+    }
+
+    .item .label:after {
+      content: ':';
+      position: absolute;
+      right: 0px;
+    }
+
+    .item .value {
+      flex: 1;
+      padding-left: 24px;
+    }
+
+    .item .value input {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="watermark"></div>
+  <div class="container">
+    <div class="demo-container">
+      <div class="demo-header">
+        <h1>表单label文字两端对齐</h1>
+        <div class="account-list">
+          <a class="link" href="https://intolearn.com" target="_blank" title="我的主页">
+            <img src="../assets/home.png" alt="微博" class="icon">
+          </a>
+          <a class="link" href="https://www.jianshu.com/u/002380273ac6" target="_blank" title="简书">
+            <img src="../assets/jianshu.png" alt="微博" class="icon">
+          </a>
+        </div>
+      </div>
+      <div class="demo-content">
+        <div class="card">
+          <div class="item">
+            <div class="label">密码</div>
+            <div class="value">8888888888</div>
+          </div>
+          <div class="item">
+            <div class="label">用户名</div>
+            <div class="value"><a href="https://intolearn.com/">前端_逗叔</a></div>
+          </div>
+          <div class="item">
+            <div class="label">电子邮箱</div>
+            <div class="value">8888888@qq.com</div>
+          </div>
+          <div class="item">
+            <div class="label">手机号码</div>
+            <div class="value">18888888888</div>
+          </div>
+          <div class="item">
+            <div class="label">喜欢的游戏</div>
+            <div class="value">王者荣耀</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="item">
+            <div class="label">密码</div>
+            <div class="value"><input type="text"></div>
+          </div>
+          <div class="item">
+            <div class="label">用户名</div>
+            <div class="value"><input type="text"></div>
+          </div>
+          <div class="item">
+            <div class="label">电子邮箱</div>
+            <div class="value"><input type="text"></div>
+          </div>
+          <div class="item">
+            <div class="label">手机号码</div>
+            <div class="value"><input type="text"></div>
+          </div>
+          <div class="item">
+            <div class="label">喜欢的游戏</div>
+            <div class="value"><input type="text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
