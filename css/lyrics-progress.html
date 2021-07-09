@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CSS模拟歌词进度逐渐填充效果</title>
+  <meta name="description" content="前端各种示例效果展示" />
+  <meta name="keywords" content="前端,前端_逗叔,css,javascript,文字对齐,文字两端对齐,表单文字对齐" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/index.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_2663789_p4dyc8uogig.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.slim.min.js"></script>
+  <style>
+    .lyrics-panel {
+      width: 662px;
+      height: 101px;
+      background: darkgrey;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+
+    .lyrics-tool {
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+
+    .lyrics-text {
+      font-size: 30px;
+      color: white;
+      text-align: center;
+      background: #fff -webkit-linear-gradient(left, red, red) no-repeat 0 0;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-size: 0 100%;
+    }
+
+    .lyrics-tool .iconfont {
+      margin-right: 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .lyrics-tool .iconfont:last-child {
+      margin-right: 0px;
+    }
+
+    .load {
+      background-size: 100% 100%;
+      animation: progress 5s linear infinite;
+    }
+
+    .paused {
+      animation-play-state: paused;
+      -webkit-animation-play-state: paused;
+    }
+
+    @keyframes progress {
+      0% {
+        background-size: 0 100%;
+      }
+
+      100% {
+        background-size: 100% 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="watermark"></div>
+  <div class="container">
+    <div class="demo-container">
+      <div class="demo-header">
+        <h1>CSS模拟歌词进度逐渐填充效果</h1>
+        <div class="account-list">
+          <a class="link" href="https://intolearn.com" target="_blank" title="我的主页">
+            <img src="../assets/home.png" class="icon">
+          </a>
+          <a class="link" href="https://juejin.cn/user/465848661715341" target="_blank" title="掘金">
+            <img src="../assets/juejin.png" class="icon">
+          </a>
+          <a class="link" href="https://www.jianshu.com/u/002380273ac6" target="_blank" title="简书">
+            <img src="../assets/jianshu.png" class="icon">
+          </a>
+        </div>
+      </div>
+      <div class="demo-content">
+        <div class="lyrics-panel">
+          <div class="lyrics-tool">
+            <span class="iconfont icon-z" title="进入音乐详情页"></span>
+            <span class="iconfont icon-shangyishouweidianji" title="上一首"></span>
+            <span class="iconfont icon-zantingtingzhi btn"></span>
+            <span class="iconfont icon-xiayishouweidianji" title="下一首"></span>
+            <span class="iconfont icon-shezhi" title="设置"></span>
+            <span class="iconfont icon-suoding" title="锁定"></span>
+          </div>
+          <div class="lyrics-text load">CSS模拟歌词进度逐渐填充效果</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      $(".btn").click(() => {
+        $(".lyrics-text").toggleClass("paused");
+        $(".btn").toggleClass("icon-bofang");
+        $(".btn").toggleClass("icon-zantingtingzhi");
+      })
+
+    })
+  </script>
+</body>
+
+</html>
