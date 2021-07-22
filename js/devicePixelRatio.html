@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>获取设备参数</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css" />
+  <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
+  <style>
+    .title {
+      margin: 0;
+      padding: 32px 16px 16px;
+      color: rgba(69, 90, 100, 0.6);
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2 class="title">设备信息</h2>
+    <van-cell-group>
+      <van-cell title="物理像素比 (DPR)" :value="dpr"></van-cell>
+      <van-cell title="屏幕大小" :value="`${screenWidth} x ${screenHeight}`"></van-cell>
+      <van-cell title="屏幕分辨率" :value="resolution"></van-cell>
+    </van-cell-group>
+    <h2 class="title">计算尺寸</h2>
+    <van-form>
+      <van-field v-model="resolutionWidth" label="分辨率-宽"></van-field>
+      <van-field v-model="resolutionHeight" label="分辨率-高"></van-field>
+      <van-field name="radio" label="输入类型">
+        <template #input>
+          <van-radio-group v-model="radio" direction="horizontal">
+            <van-radio :name="1">PPI (像素每英寸)</van-radio>
+            <van-radio :name="2">屏幕尺寸</van-radio>
+          </van-radio-group>
+        </template>
+      </van-field>
+      <van-field v-model="ppi" label="PPI" :disabled="radio==2" placeholder="请输入PPI (像素每英寸)"></van-field>
+      <van-field v-model="size" label="屏幕尺寸" :disabled="radio==1" placeholder="请输入屏幕尺寸"></van-field>
+      <div style="margin: 16px;">
+        <van-button round block type="info" native-type="button" @click="calc">计算</van-button>
+      </div>
+    </van-form>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          dpr: window.devicePixelRatio,
+          screenWidth: window.screen.width,
+          screenHeight: window.screen.height,
+          resolutionWidth: "",
+          resolutionHeight: "",
+          ppi: "",
+          size: "",
+          radio: 1
+        }
+      },
+      computed: {
+        resolution() {
+          return `${this.screenWidth * this.dpr} x ${this.screenHeight * this.dpr}`
+        },
+      },
+      mounted() {
+        this.resolutionWidth = this.screenWidth * this.dpr;
+        this.resolutionHeight = this.screenHeight * this.dpr
+      },
+      methods: {
+        calc() {
+          if (this.radio == 1) {
+            this.size = Math.sqrt(Math.pow(this.resolutionWidth, 2) + Math.pow(this.resolutionHeight, 2)) / this.ppi
+          } else {
+            this.ppi = Math.sqrt(Math.pow(this.resolutionWidth, 2) + Math.pow(this.resolutionHeight, 2)) / this.size
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
