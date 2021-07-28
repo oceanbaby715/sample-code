@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>移动端1px解决方案</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css" />
+  <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
+  <style>
+    .title {
+      margin: 0;
+      padding: 32px 16px 16px;
+      color: rgba(69, 90, 100, 0.6);
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .demo-wrap {
+      display: flex;
+      padding: 8px 16px;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box+.box {
+      margin-left: 16px;
+    }
+
+    .border1 {
+      border: 1px solid #e8e8e8
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+      .border1 {
+        border: 0.5px solid #e8e8e8
+      }
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+      .border1 {
+        border: 0.333333px solid #e8e8e8
+      }
+    }
+
+    .demo-wrap2 {
+      padding: 8px 16px;
+      background-color: #f7f8fa;
+    }
+
+    [class*='box-shadow'] {
+      height: 50px;
+      width: 100%;
+      font-size: 12px;
+      text-align: center;
+      line-height: 50px;
+      margin-bottom: 8px;
+      background: white;
+    }
+
+    .box-shadow-top {
+      box-shadow: inset 0px 1px 1px -1px red;
+    }
+
+    .box-shadow-bottom {
+      box-shadow: inset 0px -1px 1px -1px red;
+    }
+
+    .box-shadow-left {
+      box-shadow: inset 1px 0px 1px -1px red;
+    }
+
+    .box-shadow-right {
+      box-shadow: inset -1px 0px 1px -1px red;
+    }
+
+    .box-shadow-surround {
+      box-shadow: inset 0px 0px 1px 0px red
+    }
+
+    .demo-wrap3 {
+      padding: 8px 16px;
+      background-color: #f7f8fa;
+    }
+
+    .box3 {
+      flex: 1;
+      height: 50px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      background: #fff;
+      padding: 8px;
+    }
+
+    .box3 [class*='van-hairline'] {
+      padding: 8px;
+      height: 30px;
+    }
+
+    .van-hairline-round::after{
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2 class="title">1.border设置为小数</h2>
+    <div class="demo-wrap">
+      <div class="box" style="border:1px solid #e8e8e8">border:1px</div>
+      <div class="box border1">dpr:{{dpr}}<br />border:1/dpr</div>
+    </div>
+    <h2 class="title">2.box-shadow</h2>
+    <div class="demo-wrap2">
+      <div class="box-shadow-top">上边框</div>
+      <div class="box-shadow-bottom">下边框</div>
+      <div class="box-shadow-left">左边框</div>
+      <div class="box-shadow-right">右边框</div>
+      <div class="box-shadow-surround">全边框</div>
+      <div class="box-shadow-surround" style="border-radius: 8px;">圆角全边框</div>
+    </div>
+    <h2 class="title">3.transform + 伪类</h2>
+    <div class="demo-wrap3">
+      <div class="box3">
+        <div class="van-hairline--top">上边框</div>
+      </div>
+      <div class="box3">
+        <div class="van-hairline--bottom">下边框</div>
+      </div>
+      <div class="box3">
+        <div class="van-hairline--left">左边框</div>
+      </div>
+      <div class="box3">
+        <div class="van-hairline--right">右边框</div>
+      </div>
+      <div class="box3">
+        <div class="van-hairline--surround">全边框</div>
+      </div>
+      <div class="box3">
+        <div class="van-hairline--surround van-hairline-round">圆角边框</div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          dpr: window.devicePixelRatio
+        }
+      },
+      computed: {
+
+      },
+      mounted() {
+      },
+      methods: {
+      }
+    });
+  </script>
+</body>
+
+</html>
